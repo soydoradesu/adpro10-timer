@@ -105,6 +105,20 @@ fn main() {
         println!("Valen's komputer: done!");
     });
 
+    spawner.spawn(async {
+        println!("Valen's komputer: howdy2!");
+        // Wait for our timer future to complete after two seconds.
+        TimerFuture::new(Duration::new(2, 0)).await;
+        println!("Valen's komputer: done2!");
+    });
+
+    spawner.spawn(async {
+        println!("Valen's komputer: howdy3!");
+        // Wait for our timer future to complete after two seconds.
+        TimerFuture::new(Duration::new(2, 0)).await;
+        println!("Valen's komputer: done3!");
+    });
+
     println!("Valen's komputer: hey hey");
     // Drop the spawner so that our executor knows it is finished and won't
     // receive more incoming tasks to run.
